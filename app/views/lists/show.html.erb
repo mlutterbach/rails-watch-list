@@ -1,0 +1,22 @@
+<div class="container d-flex justify-content-center">
+  <div class="w-50 p-3">
+  <h1 class="text-center">List specific</h1>
+    <% @list.movies.each_with_index do |movie, index| %>
+    <div class="cards card-trip">
+        <img class="card-category" src= "<%= movie.poster_url %>" alt="A movie poster">
+      <div class="card-trip-infos">
+        <div>
+          <h2>Title:<%= movie.title %></h2>
+          <p>Overview:<%= movie.overview %></p>
+          <%= @list.bookmarks[index].comment %>
+        </div>
+          <h2 class="card-trip-pricing">Rating:<%= movie.rating %></h2>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+
+<h3><%= link_to "Back", lists_path %></h3>
+<h3><%= link_to "new Movie", new_list_bookmark_path(@list)%></h3>

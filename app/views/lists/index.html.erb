@@ -1,0 +1,22 @@
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://d279m997dpfwgl.cloudfront.net/wp/2020/12/GettyImages-1150049038.jpg);">
+  <div class="container">
+    <h1 class="text-center"><strong>Save</strong> any kind of <strong>movies</strong>!</h1>
+    <p class="text-center">Try it! bookmark something</p>
+  </div>
+</div>
+
+
+<div class="container d-flex justify-content-center">
+  <div class="w-75 p-3">
+    <h1>My Lists</h1>
+    <div class="cards">
+      <% @lists.each do |list| %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+        <p><%= link_to list.name, list_path(list) %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= link_to "New List",  new_list_path %>
+<%#= link_to "New Bookmark", new_list_bookmark_path %>
