@@ -2,21 +2,49 @@
   <div class="w-50 p-3">
   <h1 class="text-center">List specific</h1>
     <% @list.movies.each_with_index do |movie, index| %>
-    <div class="cards card-trip">
-        <img class="card-category" src= "<%= movie.poster_url %>" alt="A movie poster">
+    <div class="cards card-trip m-2">
+          <img src= "<%= movie.poster_url %>" alt="A movie poster">
       <div class="card-trip-infos">
         <div>
-          <h2>Title:<%= movie.title %></h2>
-          <p>Overview:<%= movie.overview %></p>
+          <h2>Title: <%= movie.title %></h2>
+          <p>Overview: <%= movie.overview %></p>
           <%= @list.bookmarks[index].comment %>
+          <p class="card-trip-pricing">Rating: <%= movie.rating %></p>
         </div>
-          <h2 class="card-trip-pricing">Rating:<%= movie.rating %></h2>
       </div>
     </div>
     <% end %>
+  <div class="d-flex justify-content-between m-2">
+    <h3 class="btn btn-flat"><%= link_to "Back", lists_path%></h3>
+    <h3 class="btn btn-flat"><%= link_to "New Movie", new_list_bookmark_path(@list)%></h3>
+  </div>
   </div>
 </div>
 
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Leave a review
+</button>
 
-<h3><%= link_to "Back", lists_path %></h3>
-<h3><%= link_to "new Movie", new_list_bookmark_path(@list)%></h3>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-body">
+          <%= simple_form_for [@list, @review] do |f| %>
+            <%= f.input :comment  %>
+            <%= f.input :rating %>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <%= f.submit "Submit review" %>
+      </div>
+          <% end %>
+    </div>
+  </div>
+</div>

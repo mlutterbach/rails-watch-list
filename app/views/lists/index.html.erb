@@ -1,15 +1,19 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://d279m997dpfwgl.cloudfront.net/wp/2020/12/GettyImages-1150049038.jpg);">
   <div class="container">
     <h1 class="text-center"><strong>Save</strong> any kind of <strong>movies</strong>!</h1>
-    <p class="text-center">Try it! bookmark something</p>
+    <p class="text-center">
+      <span data-controller="typed-js"></span>
+    </p>
   </div>
 </div>
 
 
 <div class="container d-flex justify-content-center">
-  <div class="w-75 p-3">
-    <h1>My Lists</h1>
-    <div class="cards">
+  <div class="w-75 m-2 p-3">
+    <div class="justify-content-between">
+      <h1>My Lists</h1>
+    </div>
+    <div class="cards" style="min-height: 125px">
       <% @lists.each do |list| %>
         <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://media.istockphoto.com/photos/popcorn-and-clapperboard-picture-id1191001701?k=20&m=1191001701&s=612x612&w=0&h=uDszifNzvgeY5QrPwWvocFOUCw8ugViuw-U8LCJ1wu8=)">
         <p><%= link_to list.name, list_path(list) %></p>
@@ -18,5 +22,6 @@
     </div>
   </div>
 </div>
-<%= link_to "New List",  new_list_path %>
-<%#= link_to "New Bookmark", new_list_bookmark_path %>
+<div class="container d-flex justify-content-center">
+  <h3 class="btn btn-flat"><%= link_to "New List",  new_list_path %></h3>
+</div>

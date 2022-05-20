@@ -13,14 +13,19 @@ class BookmarksController < ApplicationController
     @list = List.find(params[:list_id])
     #associating the @list with the @bookmark
     @bookmark.list = @list
-    #save if valid
-    if @bookmark.save
-      #redirect
-      redirect_to list_path(@list)
-    else
-      # else render form again
-      render :new
+
+    ## attempt at select2
+    # multiple movies
+    @selected_movie = bookmark_params[:movie_id]
+    # iterate the movies
+    @selected_movie.each do |movie|
+        bookmark = Bookmark.new
+        bookmark.list = @list
+        bookmark.movie = Movie.find(movie)
+        bookmark.comment = bookmark_params[:comment]
+        bookmark.save
     end
+    redirect_to list_path(@list)
   end
 
   def destroy
@@ -32,6 +37,6 @@ class BookmarksController < ApplicationController
   private
 
   def bookmark_params
-    params.require(:bookmark).permit(:comment, :list_id, :movie_id)
+    params.require(:bookmark).permit(:comment, :list_id, movie_id: [])
   end
 end
