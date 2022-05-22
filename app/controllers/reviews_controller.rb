@@ -1,16 +1,12 @@
 class ReviewsController < ApplicationController
-  before_action :set_list, only: %i[create new]
-  def new
-    @review = Review.new
-  end
-
   def create
     @review = Review.new(review_params)
+    @list = List.find(params[:list_id])
     @review.list = @list
     if @review.save
       redirect_to list_path(@list)
     else
-      render "lists/show"
+      render 'lists/show'
     end
   end
 
@@ -22,11 +18,7 @@ class ReviewsController < ApplicationController
 
   private
 
-  def set_list
-    @list = List.find(params[:list_id])
-  end
-
   def review_params
-    params.require(:review).permit(:content, :rating)
+    params.require(:review).permit(:comment, :rating)
   end
 end

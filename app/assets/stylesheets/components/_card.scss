@@ -63,6 +63,11 @@
   width: 40px;
 }
 
+.card-trip-infos .card-trip-pricing {
+  position:absolute;
+  right: 5px;
+  bottom: 5px;
+}
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
