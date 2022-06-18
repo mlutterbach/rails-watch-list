@@ -16,26 +16,28 @@
     <% end %>
         <%# <%= link_to "delete", list_path(@bookmark.list_id), method: :delete, data: { confirm: "Are you sure you want to remove from your list"}, class: 'text-danger' %>
   <div>
-    <div class="col-12 col-sm-6">
-      <h3>Reviews</h3>
-      <%# raise %>
-      <% if @list.reviews.present? %>
+    <div class="col-12 col-sm-6 m-2 row" style="width: auto">
+      <div class="card-review-style">
+        <h3>Reviews</h3>
         <%# raise %>
-        <% @list.reviews.each do |review| %>
-      <div class="cards ">
-        <div>
-          <p><% review.rating %></p>
-          <% review.rating.times do %>
-            <i class="fas fa-star star-yellow"></i>
-          <% end %>
-          <p><%= review.comment %></p>
+        <% if @list.reviews.present? %>
+          <%# raise %>
+          <% @list.reviews.each do |review| %>
+        <div class="cards-review">
+          <div>
+            <p><% review.rating %></p>
+            <% review.rating.times do %>
+              <i class="fas fa-star star-yellow"></i>
+            <% end %>
+            <p><%= review.comment %></p>
+          </div>
         </div>
-      </div>
+          <% end %>
+        <% else %>
+        <%# raise %>
+          <%= 'Be the first to leave a review!' %>
         <% end %>
-      <% else %>
-      <%# raise %>
-        <%= 'Be the first to leave a review!' %>
-      <% end %>
+      </div>
     </div>
   </div>
 
