@@ -1,6 +1,6 @@
 <div class="container d-flex justify-content-center">
   <div class="w-50 p-3">
-  <h1 class="text-center">List movies</h1>
+  <h1 class="text-center title-font-style-color">List movies</h1>
     <% @list.movies.each_with_index do |movie, index| %>
     <div class="card-trip m-2">
           <img src= "<%= movie.poster_url %>" alt="A movie poster">
@@ -14,14 +14,12 @@
       </div>
     </div>
     <% end %>
-        <%# <%= link_to "delete", list_path(@bookmark.list_id), method: :delete, data: { confirm: "Are you sure you want to remove from your list"}, class: 'text-danger' %>
+
   <div>
     <div class="col-12 col-sm-6 m-2 row" style="width: auto">
       <div class="card-review-style">
         <h3>Reviews</h3>
-        <%# raise %>
         <% if @list.reviews.present? %>
-          <%# raise %>
           <% @list.reviews.each do |review| %>
         <div class="cards-review">
           <div>
@@ -34,7 +32,6 @@
         </div>
           <% end %>
         <% else %>
-        <%# raise %>
           <%= 'Be the first to leave a review!' %>
         <% end %>
       </div>

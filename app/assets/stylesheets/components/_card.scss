@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -8,6 +10,13 @@
 .cards-review {
   display: grid;
   grid-template-columns: 1fr;
+}
+
+.title-font-style-color {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 50px;
+  color: #E30B1A;
 }
 
 .review-size {
